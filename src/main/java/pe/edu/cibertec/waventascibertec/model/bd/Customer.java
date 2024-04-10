@@ -2,6 +2,8 @@ package pe.edu.cibertec.waventascibertec.model.bd;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import pe.edu.cibertec.waventascibertec.model.embeddable.AddressDetails;
+import pe.edu.cibertec.waventascibertec.model.embeddable.CompanyContact;
 
 import java.util.List;
 
@@ -13,22 +15,10 @@ public class Customer {
     @Id
     @Column(length = 5)
     private String customerid;
-    @Column(length = 40, nullable = false)
-    private String companyname;
-    @Column(length = 30)
-    private String contactname;
-    @Column(length = 30)
-    private String contacttitle;
-    @Column(length = 60)
-    private String address;
-    @Column(length = 15)
-    private String city;
-    @Column(length = 15)
-    private String region;
-    @Column(length = 10)
-    private String postalcode;
-    @Column(length = 15)
-    private String country;
+    @Embedded
+    private CompanyContact companyContact;
+    @Embedded
+    private AddressDetails addressDetails;
     @Column(length = 24)
     private String phone;
     @Column(length = 24)
