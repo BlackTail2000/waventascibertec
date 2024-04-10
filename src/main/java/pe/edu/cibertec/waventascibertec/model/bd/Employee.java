@@ -2,6 +2,7 @@ package pe.edu.cibertec.waventascibertec.model.bd;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import pe.edu.cibertec.waventascibertec.model.embeddable.AddressDetails;
 
 import java.util.Date;
 import java.util.List;
@@ -28,16 +29,8 @@ public class Employee {
     @Temporal(value = TemporalType.TIMESTAMP)
     @Column(columnDefinition = "DATETIME")
     private Date hiredate;
-    @Column(length = 60)
-    private String address;
-    @Column(length = 15)
-    private String city;
-    @Column(length = 15)
-    private String region;
-    @Column(length = 10)
-    private String postalcode;
-    @Column(length = 15)
-    private String country;
+    @Embedded
+    private AddressDetails addressDetails;
     @Column(length = 24)
     private String homephone;
     @Column(length = 4)
